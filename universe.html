@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notched Arrow Universe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Additional page-specific styles */
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+        }
+
+        .page-title {
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .page-content {
+            margin-top: 2rem;
+        }
+
+        /* Expand content area vertically as needed */
+        .card-content {
+            min-height: 300px;
+            text-align: left;
+        }
+
+        /* Section styles */
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Project card styles */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(185, 18, 119, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(45deg, var(--primary-dark), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Productivity tricks styles */
+        .tricks-list {
+            margin-top: 1.5rem;
+        }
+
+        .trick-item {
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .trick-item:hover {
+            background: rgba(30, 30, 30, 0.8);
+            border-color: rgba(185, 18, 119, 0.3);
+        }
+
+        .trick-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .trick-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* Team member styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Background image */
+        body {
+            background-image: url('images/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Logo styles */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-link {
+                top: 1rem;
+                left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="background-blur"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-link"><span class="back-arrow">←</span> Back to home</a>
+
+        <main>
+            <section class="hero">
+                <div class="logo-container">
+                    <div class="logo-animation">
+                        <img src="images/logo.png" alt="Notched Arrow Logo" class="logo-img">
+                    </div>
+                </div>
+                <h1 class="page-title">NOTCHED ARROW UNIVERSE</h1>
+            </section>
+
+            <section class="content">
+                <div class="color-splash"></div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="section">
+                            <h2 class="section-title">ABOUT US</h2>
+                            <p>Notched Arrow was founded with a singular vision: to create digital experiences that not only function flawlessly but also inspire and engage. Our team combines technical expertise with creative vision to deliver solutions that make a lasting impact.</p>
+
+                            <p>We believe that the best digital products are born at the intersection of technology, design, and human psychology. This philosophy guides everything we do, from the smallest interaction to the largest system architecture.</p>
+
+                            <div class="team-grid">
+                                <div class="team-member">
+                                    <div class="member-avatar">AJ</div>
+                                    <h3 class="member-name">Alex Johnson</h3>
+                                    <div class="member-role">Founder & Lead Developer</div>
+                                    <p class="member-bio">With over 15 years of experience in software development, Alex leads our technical initiatives with precision and vision.</p>
+                                </div>
+
+                                <div class="team-member">
+                                    <div class="member-avatar">ML</div>
+                                    <h3 class="member-name">Morgan Lee</h3>
+                                    <div class="member-role">UX/UI Specialist</div>
+                                    <p class="member-bio">Morgan transforms complex requirements into intuitive, beautiful interfaces that users love to engage with.</p>
+                                </div>
+
+                                <div class="team-member">
+                                    <div class="member-avatar">TP</div>
+                                    <h3 class="member-name">Taylor Park</h3>
+                                    <div class="member-role">Strategic Consultant</div>
+                                    <p class="member-bio">Taylor helps our clients navigate the digital landscape with strategic insights and forward-thinking approaches.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h2 class="section-title">PUBLISHED WORKS</h2>
+                            <p>Our portfolio spans a diverse range of projects, from enterprise applications to innovative startups. Each project represents our commitment to excellence and our passion for creating meaningful digital experiences.</p>
+
+                            <div class="projects-grid">
+                                <div class="project-card">
+                                    <div class="project-image">🚀</div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">LaunchPad CRM</h3>
+                                        <p class="project-desc">A comprehensive customer relationship management system designed specifically for startups and small businesses.</p>
+                                        <a href="#" class="project-link">View Case Study →</a>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-image">🌐</div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">GlobalConnect Platform</h3>
+                                        <p class="project-desc">An international collaboration tool that bridges language and cultural barriers for distributed teams.</p>
+                                        <a href="#" class="project-link">View Case Study →</a>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-image">🛍️</div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Artisan Marketplace</h3>
+                                        <p class="project-desc">A digital marketplace connecting artisans with global customers, featuring secure payments and logistics.</p>
+                                        <a href="#" class="project-link">View Case Study →</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h2 class="section-title">PRODUCTIVITY TRICKS</h2>
+                            <p>We're passionate about optimizing workflows and boosting productivity. Here are some of our favorite techniques and tools that we use daily and recommend to our clients.</p>
+
+                            <div class="tricks-list">
+                                <div class="trick-item">
+                                    <div class="trick-title">
+                                        <span class="trick-icon">⏱️</span>
+                                        <span>Time Blocking Mastery</span>
+                                    </div>
+                                    <p>Allocate specific time blocks for different types of work to maintain focus and reduce context switching. We recommend using the Pomodoro technique (25 minutes of focused work followed by a 5-minute break) combined with task batching for maximum efficiency.</p>
+                                </div>
+
+                                <div class="trick-item">
+                                    <div class="trick-title">
+                                        <span class="trick-icon">🧠</span>
+                                        <span>Second Brain System</span>
+                                    </div>
+                                    <p>Implement a personal knowledge management system to capture, organize, and retrieve information efficiently. Tools like Notion, Obsidian, or Roam Research can serve as your "second brain," allowing you to connect ideas and access information when needed.</p>
+                                </div>
+
+                                <div class="trick-item">
+                                    <div class="trick-title">
+                                        <span class="trick-icon">⌨️</span>
+                                        <span>Keyboard Shortcut Mastery</span>
+                                    </div>
+                                    <p>Invest time in learning keyboard shortcuts for your most-used applications. This small upfront investment can save hours of cumulative time. We've developed custom shortcut systems for various development environments that have dramatically increased our team's efficiency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Notched Arrow LLC. All rights reserved.</p>
+            <p class="credits">Site crafted with the assistance of <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude 3.7</a></p>
+        </footer>
+    </div>
+
+    <div class="back-to-top">↑</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth reveal animation for page elements
+            const revealElements = document.querySelectorAll('.hero, .card');
+
+            revealElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    element.style.transition = 'opacity 1s ease, transform 1s ease';
+
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+
+            // Parallax effect for the color splash
+            const colorSplash = document.querySelector('.color-splash');
+
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                const moveX = (mouseX - 0.5) * 20;
+                const moveY = (mouseY - 0.5) * 20;
+
+                colorSplash.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+            });
+
+            // Back to top button functionality
+            const backToTopBtn = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll animation for sections
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
