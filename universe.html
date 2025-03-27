@@ -139,6 +139,50 @@
             text-decoration: underline;
         }
 
+        /* Team section styles */
+        .team-section {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
         /* Productivity tricks styles */
         .tricks-list {
             margin-top: 1.5rem;
@@ -178,52 +222,17 @@
             font-size: 1.2rem;
         }
 
-        /* Team member styles */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .trick-content {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .team-member {
-            text-align: center;
-            transition: var(--transition);
+        .trick-content p {
+            margin-bottom: 1rem;
         }
 
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-
-        .member-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .member-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .member-role {
-            font-size: 0.9rem;
-            color: var(--primary-light);
-            margin-bottom: 0.8rem;
-        }
-
-        .member-bio {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+        .trick-content p:last-child {
+            margin-bottom: 0;
         }
 
         /* Background image */
@@ -274,14 +283,18 @@
         }
 
         @media (max-width: 768px) {
-            .projects-grid,
-            .team-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
 
             .back-link {
                 top: 1rem;
                 left: 1rem;
+            }
+
+            .team-section {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -308,64 +321,61 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="section">
-                            <h2 class="section-title">ABOUT US</h2>
-                            <p>Notched Arrow was founded with a singular vision: to create digital experiences that not only function flawlessly but also inspire and engage. Our team combines technical expertise with creative vision to deliver solutions that make a lasting impact.</p>
+                            <h2 class="section-title">ABOUT NOTCHED ARROW</h2>
+                            <p>Notched Arrow was born from a passion for precision, productivity, and problem-solving. After years in hospitality, I took the leap into the digital realm, channeling my lifelong obsession with efficiency and technical innovation into a consultancy that delivers exceptional results.</p>
 
-                            <p>We believe that the best digital products are born at the intersection of technology, design, and human psychology. This philosophy guides everything we do, from the smallest interaction to the largest system architecture.</p>
+                            <p>The emergence of AI has been a watershed moment, allowing me to expand my capabilities from strategic consulting into full-scale development. By combining philosophical thinking with technical expertise, I've crafted a unique approach to digital challenges that leverages cutting-edge tools while maintaining a human-centered focus.</p>
 
-                            <div class="team-grid">
-                                <div class="team-member">
-                                    <div class="member-avatar">AJ</div>
-                                    <h3 class="member-name">Alex Johnson</h3>
-                                    <div class="member-role">Founder & Lead Developer</div>
-                                    <p class="member-bio">With over 15 years of experience in software development, Alex leads our technical initiatives with precision and vision.</p>
-                                </div>
+                            <p>Every project I take on benefits from my unique blend of communication skills, technical knowledge, and relentless pursuit of excellence. Whether you're looking to optimize your workflow, develop custom software, or navigate digital transformation, Notched Arrow delivers solutions with precision and purpose.</p>
 
-                                <div class="team-member">
-                                    <div class="member-avatar">ML</div>
-                                    <h3 class="member-name">Morgan Lee</h3>
-                                    <div class="member-role">UX/UI Specialist</div>
-                                    <p class="member-bio">Morgan transforms complex requirements into intuitive, beautiful interfaces that users love to engage with.</p>
-                                </div>
-
-                                <div class="team-member">
-                                    <div class="member-avatar">TP</div>
-                                    <h3 class="member-name">Taylor Park</h3>
-                                    <div class="member-role">Strategic Consultant</div>
-                                    <p class="member-bio">Taylor helps our clients navigate the digital landscape with strategic insights and forward-thinking approaches.</p>
+                            <div class="team-section">
+                                <div class="member-avatar">CZ</div>
+                                <div class="member-info">
+                                    <h3 class="member-name">Clarke Zyz</h3>
+                                    <div class="member-role">Founder & Digital Consultant</div>
+                                    <p class="member-bio">With a background spanning philosophy, technical development, and client service, Clarke brings a multidisciplinary approach to every challenge. Specializing in AI-augmented development and productivity optimization, he transforms complex requirements into elegant, functional solutions for businesses of all sizes.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="section">
-                            <h2 class="section-title">PUBLISHED WORKS</h2>
-                            <p>Our portfolio spans a diverse range of projects, from enterprise applications to innovative startups. Each project represents our commitment to excellence and our passion for creating meaningful digital experiences.</p>
+                            <h2 class="section-title">SELECTED EXPERIENCE</h2>
+                            <p>My consulting work spans multiple industries and disciplines, with a focus on delivering tangible value through technical expertise and strategic insight. Here's a glimpse of how I've helped organizations overcome challenges and achieve their goals:</p>
 
                             <div class="projects-grid">
                                 <div class="project-card">
-                                    <div class="project-image">🚀</div>
+                                    <div class="project-image">🔗</div>
                                     <div class="project-content">
-                                        <h3 class="project-title">LaunchPad CRM</h3>
-                                        <p class="project-desc">A comprehensive customer relationship management system designed specifically for startups and small businesses.</p>
-                                        <a href="#" class="project-link">View Case Study →</a>
+                                        <h3 class="project-title">Züs</h3>
+                                        <p class="project-desc">Provided rebranding strategy and launch coordination for this blockchain-enabled storage company, while managing community engagement and security auditing.</p>
+                                        <a href="https://zus.network" target="_blank" class="project-link">Visit Website →</a>
                                     </div>
                                 </div>
 
                                 <div class="project-card">
-                                    <div class="project-image">🌐</div>
+                                    <div class="project-image">🎮</div>
                                     <div class="project-content">
-                                        <h3 class="project-title">GlobalConnect Platform</h3>
-                                        <p class="project-desc">An international collaboration tool that bridges language and cultural barriers for distributed teams.</p>
-                                        <a href="#" class="project-link">View Case Study →</a>
+                                        <h3 class="project-title">Horizon</h3>
+                                        <p class="project-desc">Delivered game testing consultation and development support for this gaming and Ethereum wallet company, while serving as an on-camera brand ambassador.</p>
+                                        <a href="https://horizon.io/" target="_blank" class="project-link">Visit Website →</a>
                                     </div>
                                 </div>
 
                                 <div class="project-card">
-                                    <div class="project-image">🛍️</div>
+                                    <div class="project-image">⚙️</div>
                                     <div class="project-content">
-                                        <h3 class="project-title">Artisan Marketplace</h3>
-                                        <p class="project-desc">A digital marketplace connecting artisans with global customers, featuring secure payments and logistics.</p>
-                                        <a href="#" class="project-link">View Case Study →</a>
+                                        <h3 class="project-title">Cosmic Cog</h3>
+                                        <p class="project-desc">Conducted competition analysis, created social media content, and provided business growth consulting for this video game production company.</p>
+                                        <a href="https://www.cosmiccog.com/" target="_blank" class="project-link">Visit Website →</a>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-image">💼</div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Sandler Partners</h3>
+                                        <p class="project-desc">Offered dedicated support to Senior VP with research, feedback, and outreach for this SaaS firm, helping to streamline operations and enhance decision-making.</p>
+                                        <a href="https://sandlerpartners.com/" target="_blank" class="project-link">Visit Website →</a>
                                     </div>
                                 </div>
                             </div>
@@ -373,31 +383,51 @@
 
                         <div class="section">
                             <h2 class="section-title">PRODUCTIVITY TRICKS</h2>
-                            <p>We're passionate about optimizing workflows and boosting productivity. Here are some of our favorite techniques and tools that we use daily and recommend to our clients.</p>
+                            <p>Productivity isn't about following someone else's system. It's about discovering what works for you and building habits that align with your natural strengths. Here are some insights I've gathered from years of productivity experimentation and consulting work:</p>
 
                             <div class="tricks-list">
                                 <div class="trick-item">
                                     <div class="trick-title">
-                                        <span class="trick-icon">⏱️</span>
-                                        <span>Time Blocking Mastery</span>
-                                    </div>
-                                    <p>Allocate specific time blocks for different types of work to maintain focus and reduce context switching. We recommend using the Pomodoro technique (25 minutes of focused work followed by a 5-minute break) combined with task batching for maximum efficiency.</p>
-                                </div>
-
-                                <div class="trick-item">
-                                    <div class="trick-title">
                                         <span class="trick-icon">🧠</span>
-                                        <span>Second Brain System</span>
+                                        <span>Find Your Unique Workflow</span>
                                     </div>
-                                    <p>Implement a personal knowledge management system to capture, organize, and retrieve information efficiently. Tools like Notion, Obsidian, or Roam Research can serve as your "second brain," allowing you to connect ideas and access information when needed.</p>
+                                    <div class="trick-content">
+                                        <p>The real trick to being productive isn't a collection of trendy techniques. It's not about time blocking, to-do list obsession, or perfectly scheduled breaks. THE fundamental trick is knowing how YOU work best.</p>
+
+                                        <p>Discover your personal style and methodology. What drives one person's productivity might completely stifle another's. For me, it's to-do lists, meditation, and extended periods of uninterrupted focus. For you, it might be reward-based sprints, social interaction, and background music.</p>
+
+                                        <p>We all have untapped potential, but if we force ourselves into someone else's productivity template, we'll never reach it. The most productive version of yourself looks exactly like you—just operating at your natural best.</p>
+                                    </div>
                                 </div>
 
                                 <div class="trick-item">
                                     <div class="trick-title">
-                                        <span class="trick-icon">⌨️</span>
-                                        <span>Keyboard Shortcut Mastery</span>
+                                        <span class="trick-icon">🎯</span>
+                                        <span>Purpose-Driven Goals</span>
                                     </div>
-                                    <p>Invest time in learning keyboard shortcuts for your most-used applications. This small upfront investment can save hours of cumulative time. We've developed custom shortcut systems for various development environments that have dramatically increased our team's efficiency.</p>
+                                    <div class="trick-content">
+                                        <p>To be truly productive, you need meaningful goals. You can't simply wake up thinking, "I'll do everything I can today." Instead, approach each day with: "I'll do everything I can to accomplish [specific goal]."</p>
+
+                                        <p>This is the foundation of lasting motivation. No one works their way into success without the intention to be successful. If your goal is merely to survive the day, that's exactly what you'll do—no judgment, we've all been there.</p>
+
+                                        <p>Create goals at every scale: daily project completions, career aspirations, and personal commitments. But here's the crucial part: they must genuinely resonate with YOU. Goals adopted from others without internal alignment become obstacles rather than motivators. When you pursue what truly matters to you, productivity naturally follows.</p>
+                                    </div>
+                                </div>
+
+                                <div class="trick-item">
+                                    <div class="trick-title">
+                                        <span class="trick-icon">✍️</span>
+                                        <span>The Daily Superpower</span>
+                                    </div>
+                                    <div class="trick-content">
+                                        <p>When I share this final trick, I often see eye rolls—until people try it. This single practice has transformed my capabilities within months of consistent application. I genuinely call it my superpower.</p>
+
+                                        <p>The mental clarity, memory enhancement, and natural behavioral improvements that emerge will impress everyone around you—even those who have no idea you're doing this. If you establish this habit and then start missing days, consider it an alarm bell that something is disrupting your potential.</p>
+
+                                        <p>It's the most frequently recommended practice by mental health professionals for processing emotions, overcoming challenges, and developing psychological resilience. Yet it's not just for those in crisis—it's for anyone seeking greater productivity and personal growth.</p>
+
+                                        <p>The practice? Daily journaling. Just a few minutes of reflection, capturing your thoughts, challenges, and victories creates profound changes in how you process information and approach your work. If you want to transform your productivity, this seemingly simple habit might be the most powerful tool you'll ever adopt.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -414,98 +444,6 @@
 
     <div class="back-to-top">↑</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Smooth reveal animation for page elements
-            const revealElements = document.querySelectorAll('.hero, .card');
-
-            revealElements.forEach((element, index) => {
-                setTimeout(() => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = 'opacity 1s ease, transform 1s ease';
-
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }, 100);
-                }, index * 200);
-            });
-
-            // Parallax effect for the color splash
-            const colorSplash = document.querySelector('.color-splash');
-
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-
-                const moveX = (mouseX - 0.5) * 20;
-                const moveY = (mouseY - 0.5) * 20;
-
-                colorSplash.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
-            });
-
-            // Back to top button functionality
-            const backToTopBtn = document.querySelector('.back-to-top');
-
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
-            });
-
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Add scroll animation for sections
-            const sections = document.querySelectorAll('.section');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(section);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
